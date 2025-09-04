@@ -46,4 +46,23 @@ public class Frais {
     public void setDeadline(LocalDateTime deadline) {
         this.deadline = deadline;
     }
+
+    @Override
+    public String toString() {
+        return "Frais{" + "id=" + id + ", label=" + label + ", montant=" + montant + ", deadline=" + deadline + '}';
+    }
+
+    private String statusFrais(){
+        if (montant == 0 && deadline.isBefore(getDeadline())){
+            return "IN_PROGRESS";
+        } else if (montant == 0 && deadline.isAfter(getDeadline())){
+            return "LATE";
+        } else if (montant == getMontant() && deadline.isBefore(getDeadline())){
+            return "PAID";
+        } else if (montant == getMontant() && deadline.isAfter(getDeadline())){
+            return "OVERPAID";
+        }
+        return statusFrais();
+    }
+
 }
