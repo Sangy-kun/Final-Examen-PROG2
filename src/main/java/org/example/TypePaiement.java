@@ -2,7 +2,7 @@ package org.example;
 
 import java.time.LocalDate;
 
-public class typePaiement {
+public class TypePaiement {
     public enum TypePaiement {
         MENSUEL,
         ANNUEL
@@ -12,7 +12,7 @@ public class typePaiement {
     private double montantPaie;
     private LocalDate datePaie;
 
-    public typePaiement(int id, double montantPaie, LocalDate datePaie) {
+    public TypePaiement(int id, double montantPaie, LocalDate datePaie) {
         this.id = id;
         this.montantPaie = montantPaie;
         this.datePaie = datePaie;

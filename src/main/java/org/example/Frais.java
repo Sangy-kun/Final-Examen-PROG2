@@ -7,12 +7,14 @@ public class Frais {
     private String label;
     private double montant;
     private LocalDateTime deadline;
+    private TypePaiement type;
 
-    public Frais(int id, String label, double montant, LocalDateTime deadline) {
+    public Frais(int id, String label, double montant, LocalDateTime deadline, TypePaiement types) {
         this.id = id;
         this.label = label;
         this.montant = montant;
         this.deadline = deadline;
+        this.type = types;
     }
 
     public int getId() {
@@ -47,22 +49,11 @@ public class Frais {
         this.deadline = deadline;
     }
 
-    @Override
-    public String toString() {
-        return "Frais{" + "id=" + id + ", label=" + label + ", montant=" + montant + ", deadline=" + deadline + '}';
+    public TypePaiement getType() {
+        return type;
     }
 
-    private String statusFrais(){
-        if (montant == 0 && deadline.isBefore(getDeadline())){
-            return "IN_PROGRESS";
-        } else if (montant == 0 && deadline.isAfter(getDeadline())){
-            return "LATE";
-        } else if (montant == getMontant() && deadline.isBefore(getDeadline())){
-            return "PAID";
-        } else if (montant == getMontant() && deadline.isAfter(getDeadline())){
-            return "OVERPAID";
-        }
-        return statusFrais();
+    public void setType(TypePaiement type) {
+        this.type = type;
     }
-
 }
